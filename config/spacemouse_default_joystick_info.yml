@@ -1,0 +1,22 @@
+device_info:
+  device:
+    name: spacemouse
+  manufacturer:
+    name: 3DConnection
+    uuid: 42a7bfe9-8ce0-4466-b515-4dda66346870
+  model:
+    name: SpaceMouse_Pro
+    uuid: 57cba1d6-0812-419e-bc46-c4b71e7d9606
+  serial_number: 0
+  device_classes:
+    - class_identifier:
+        name: usb_hid
+        uuid: 9ed73885-e428-49be-ae63-00484b35516b
+      subclasses:
+        - spacemouse
+  user_description: SpaceMouse 6DOF Joystick
+id: 0
+axes_count: 6
+button_count: 4
+hat_count: 0
+  
