@@ -4,9 +4,12 @@ Robot Raconteur driver for the 3DConnexion SpaceMouse devices using the Linux ev
 
 ## Setup
 
-By default the space mouse device is assigned to the group `input`, which requires running the driver as root. To allow running the driver as a normal user, assign the device to the `plugdev` group by creating the file `/etc/udev/99-spacemouse.rules` as root with the following contents:
+By default the space mouse device is assigned to the group `input`, which requires running the driver as root. To allow running the driver as a normal user, assign the device to the `plugdev` group by creating the file `/etc/udev/rules.d/99-spacemouse.rules` as root with the following contents:
 
     KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c62b", MODE="0660", GROUP="plugdev"
+    KERNEL=="event*", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c635", MODE="0660", GROUP="plugdev"
+    KERNEL=="event*", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c633", MODE="0660", GROUP="plugdev"
+
 
 Run the following to reload the rules:
 
@@ -24,7 +27,7 @@ Install python3-robotraconteur
 
 Install Python dependencies:
 
-    sudo apt install python3-pip python3-evdev python3-yaml python3-importlib-metadata python3-setuptools
+    sudo apt install python3-pip python3-evdev python3-yaml python3-setuptools
     pip3 install --user robotraconteurcompanion
 
 ## Usage
@@ -32,6 +35,12 @@ Install Python dependencies:
 Start the driver using default configuration:
 
     python3 robotraconteur_spacemouse_evdev_driver.py --spacemouse-info-file=config/spacemouse_default_joystick_info.yml
+
+By default, this will look for the SpaceMouse Pro. Use the following for the SpaceMouse Compact:
+
+    python3 robotraconteur_spacemouse_evdev_driver.py --spacemouse-info-file=config/spacemouse_default_joystick_info.yml --device=/dev/input/by-id/usb-3Dconnexion_SpaceMouse_Compact-event-if00
+
+If your device isn't listed, look in /dev/input/by-id for the correct device, and pass the full path to `--device=`.
 
 ## Example Client
 
