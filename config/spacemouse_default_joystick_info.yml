@@ -2,7 +2,7 @@ device_info:
   device:
     name: spacemouse
   manufacturer:
-    name: 3DConnection
+    name: C_3DConnexion
     uuid: 42a7bfe9-8ce0-4466-b515-4dda66346870
   model:
     name: SpaceMouse_Pro
