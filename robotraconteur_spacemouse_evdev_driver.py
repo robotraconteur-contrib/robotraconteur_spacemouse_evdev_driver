@@ -86,9 +86,11 @@ class SpacemouseImpl:
             joy_sensor_data = self._joystick_state_sensor_data()
             joy_sensor_data.data_header = self._sensor_data_util.FillSensorDataHeader(self.device_info,self._seqno)
             joy_sensor_data.joystick_state = joy_state
-
-            self.joystick_state.OutValue = joy_state
-            self.joystick_sensor_data.AsyncSendPacket(joy_sensor_data, lambda: None)
+            try:
+                self.joystick_state.OutValue = joy_state
+                self.joystick_sensor_data.AsyncSendPacket(joy_sensor_data, lambda: None)
+            except:
+                pass
 
     @property
     def isoch_downsample(self):
